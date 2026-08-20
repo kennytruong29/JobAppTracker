@@ -1,6 +1,7 @@
 ﻿using JobAppTracker.Data;
 using JobAppTracker.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks.Dataflow;
 
 namespace JobAppTracker.Controllers
 {
@@ -28,6 +29,20 @@ namespace JobAppTracker.Controllers
 
             return JobApplication == null ? NotFound(): Ok(JobApplication);
         }
+
+        [HttpGet("status")]
+        public ActionResult<List<JobApplication>> GetJobsByStatus(List<Status> status)
+        {
+            return Ok(_context.JobApplications.Where(job => status.Contains(job.Status)).ToList());
+        }
+
+        [HttpGet("daterange")]
+        public ActionResult<List<JobApplication>> GetJobsByDateRange(DateTime startingDate, DateTime endingDate)
+        {
+            return Ok(_context.JobApplications.Where(job => job.DateApplied >= startingDate && job.DateApplied <= endingDate).ToList());
+        }
+
+
     }
  
 }

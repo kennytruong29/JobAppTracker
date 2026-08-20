@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace JobAppTracker.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260819010557_InitialCreate")]
+    [Migration("20260820002709_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -47,6 +47,10 @@ namespace JobAppTracker.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("JobTitle")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("text");
 

@@ -20,6 +20,7 @@ namespace JobAppTracker.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     CompanyName = table.Column<string>(type: "text", nullable: false),
                     JobTitle = table.Column<string>(type: "text", nullable: false),
+                    Location = table.Column<string>(type: "text", nullable: false),
                     DateApplied = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     DateLastUpdate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     URL = table.Column<string>(type: "text", nullable: true),

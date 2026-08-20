@@ -4,9 +4,10 @@
 
     public class JobApplication
     {
-        public string CompanyName { get; set; } = string.Empty;
-        public string JobTitle { get; set; } = string.Empty;
         public int Id { get; set; }
+        public required string CompanyName { get; set; }
+        public required string JobTitle { get; set; }
+        public required string Location { get; set; }
         public DateTime DateApplied { get; set; } = DateTime.Now;
         public DateTime DateLastUpdate { get; set; } = DateTime.Now;
         public string? URL { get; set; }
