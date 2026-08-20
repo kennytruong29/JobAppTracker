@@ -42,6 +42,24 @@ namespace JobAppTracker.Controllers
             return Ok(_context.JobApplications.Where(job => job.DateApplied >= startingDate && job.DateApplied <= endingDate).ToList());
         }
 
+        [HttpPost("addjob")]
+        public ActionResult<JobApplication> AddJob([FromBody] CreateJobApplicationDto job)
+        {
+            JobApplication newJob = new JobApplication { 
+                CompanyName = job.CompanyName, 
+                JobTitle = job.JobTitle, 
+                Location = job.Location, 
+                DateApplied = DateTime.Now, 
+                DateLastUpdate = DateTime.Now, 
+                URL = job.URL, 
+                Notes = job.Notes, 
+                Contact = job.Contact, 
+                Status = job.Status
+            };
+            _context.JobApplications.Add(newJob);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(GetByID), new { id = newJob.Id }, newJob);
+        }
 
     }
  
