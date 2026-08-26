@@ -8,8 +8,8 @@
         public required string CompanyName { get; set; }
         public required string JobTitle { get; set; }
         public required string Location { get; set; }
-        public DateTime DateApplied { get; set; } = DateTime.Now;
-        public DateTime DateLastUpdate { get; set; } = DateTime.Now;
+        public DateTime DateApplied { get; set; } = DateTime.UtcNow;
+        public DateTime DateLastUpdate { get; set; } = DateTime.UtcNow;
         public string? URL { get; set; }
         public string? Notes { get; set; }
         public string? Contact { get; set; }
